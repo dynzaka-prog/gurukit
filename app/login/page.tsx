@@ -1,0 +1,56 @@
+import { Button } from "@/components/ui/button";
+import { BookOpenIcon, ChromeIcon } from "lucide-react";
+import Link from "next/link";
+import { signInWithGoogle } from "./actions";
+
+export default function LoginPage() {
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-bg-primary to-bg-secondary flex flex-col items-center justify-center p-4">
+            <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8 border border-warm-200">
+                <div className="text-center mb-8">
+                    <div className="flex justify-center mb-4">
+                        <div className="w-16 h-16 bg-coral-50 rounded-2xl flex items-center justify-center">
+                            <BookOpenIcon className="w-10 h-10 text-coral-500" />
+                        </div>
+                    </div>
+                    <h1 className="text-3xl font-bold text-warm-900 mb-2">Selamat Datang!</h1>
+                    <p className="text-warm-600">
+                        Masuk ke GuruKit untuk mulai membuat soal & modul ajar pintar.
+                    </p>
+                </div>
+
+                <div className="space-y-4">
+                    <form action={signInWithGoogle}>
+                        <Button type="submit" className="w-full flex items-center gap-3 bg-white border-2 border-warm-200 text-warm-700 hover:bg-warm-50 shadow-sm transition-all" variant="ghost">
+                            <ChromeIcon className="w-5 h-5 text-coral-500" />
+                            Lanjutkan dengan Google
+                        </Button>
+                    </form>
+
+                    <div className="relative py-4">
+                        <div className="absolute inset-0 flex items-center">
+                            <span className="w-full border-t border-warm-200" />
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-white px-2 text-warm-400 font-medium">Atau</span>
+                        </div>
+                    </div>
+
+                    <p className="text-center text-sm text-warm-500">
+                        Gratis selamanya. Tidak perlu kartu kredit.
+                    </p>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-warm-100 text-center">
+                    <Link href="/" className="text-sm font-medium text-coral-500 hover:text-coral-600 transition">
+                        ← Kembali ke Beranda
+                    </Link>
+                </div>
+            </div>
+
+            <p className="mt-8 text-sm text-warm-400">
+                Dibuat dengan ❤️ untuk guru Indonesia.
+            </p>
+        </div>
+    );
+}

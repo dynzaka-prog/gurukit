@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-coral-50: #FFF5F3;
+  --color-coral-100: #FFE8E3;
+  --color-coral-200: #FFD4CC;
+  --color-coral-300: #FFB8A8;
+  --color-coral-400: #FF9580;
+  --color-coral-500: #FF6B47;
+  --color-coral-600: #E84A28;
+
+  --color-teal-50: #F0FDFA;
+  --color-teal-100: #CCFBF1;
+  --color-teal-200: #99F6E4;
+  --color-teal-300: #5EEAD4;
+  --color-teal-400: #2DD4BF;
+  --color-teal-500: #14B8A6;
+  --color-teal-600: #0D9488;
+
+  --color-warm-50: #FAFAF9;
+  --color-warm-100: #F5F5F4;
+  --color-warm-200: #E7E5E4;
+  --color-warm-300: #D6D3D1;
+  --color-warm-600: #57534E;
+  --color-warm-700: #44403C;
+  --color-warm-900: #1C1917;
+
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  --color-bg-primary: #FFFBF7;
+  --color-bg-secondary: #FFF5F0;
+  --color-bg-card: #FFFFFF;
+
+  /* Typography */
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+:root {
+  --background: var(--color-bg-primary);
+  --foreground: var(--color-warm-900);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
