@@ -36,21 +36,29 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    <p className="text-center text-sm text-warm-500">
-                        Gratis selamanya. Tidak perlu kartu kredit.
-                    </p>
+                    <div className="text-center mt-8 p-4 bg-coral-50 rounded-2xl border border-coral-100">
+                        <p className="text-coral-600 text-sm font-bold">
+                            Lisensi Seumur Hidup
+                        </p>
+                        <p className="text-warm-700 font-bold text-lg">
+                            Rp 99.000
+                        </p>
+                        <p className="text-warm-500 text-[10px] mt-1">
+                            Akses Penuh Selamanya • Update Gratis
+                        </p>
+                    </div>
+
+                    <div className="mt-8 pt-6 border-t border-warm-100 text-center">
+                        <Link href="/" className="text-sm font-medium text-coral-500 hover:text-coral-600 transition">
+                            ← Kembali ke Beranda
+                        </Link>
+                    </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-warm-100 text-center">
-                    <Link href="/" className="text-sm font-medium text-coral-500 hover:text-coral-600 transition">
-                        ← Kembali ke Beranda
-                    </Link>
-                </div>
+                <p className="mt-8 text-sm text-warm-400 text-center">
+                    Dibuat dengan ❤️ untuk guru Indonesia.
+                </p>
             </div>
-
-            <p className="mt-8 text-sm text-warm-400">
-                Dibuat dengan ❤️ untuk guru Indonesia.
-            </p>
         </div>
     );
 }

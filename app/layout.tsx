@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "GuruKit — Asisten AI Guru Indonesia",
-  description: "Bikin soal & modul ajar dalam 3 menit. Gratis selamanya, untuk guru Indonesia.",
+  description: "Bikin soal & modul ajar dalam 3 menit. Lisensi seumur hidup hanya Rp 99.000. Solusi cerdas untuk guru Indonesia.",
 };
 
 export default function RootLayout({

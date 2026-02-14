@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   BookOpenIcon,
@@ -14,11 +17,15 @@ import {
   UploadCloudIcon,
   EditIcon,
   BarChartIcon,
-  BookIcon
+  BookIcon,
+  MenuIcon,
+  XIcon
 } from "lucide-react";
 import Link from "next/link";
 
 export default function LandingPage() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-coral-50/20">
 
@@ -33,6 +40,7 @@ export default function LandingPage() {
               </span>
             </div>
 
+            {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
               <Link href="#fitur" className="text-warm-700 hover:text-coral-500 font-medium transition">
                 Fitur
@@ -45,13 +53,55 @@ export default function LandingPage() {
               </Link>
               <Button asChild variant="primary" className="group">
                 <Link href="/login" className="flex items-center">
-                  Mulai Gratis
+                  Mulai Sekarang
                   <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition" />
                 </Link>
               </Button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-warm-700 p-2"
+              >
+                {isMobileMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Menu (Overlay) */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white border-b border-warm-200 p-4 space-y-4 animate-in slide-in-from-top duration-300">
+            <Link
+              href="#fitur"
+              className="block text-lg font-medium text-warm-700 py-2 border-b border-warm-100"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Fitur
+            </Link>
+            <Link
+              href="#cara-kerja"
+              className="block text-lg font-medium text-warm-700 py-2 border-b border-warm-100"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Cara Kerja
+            </Link>
+            <Link
+              href="#testimoni"
+              className="block text-lg font-medium text-warm-700 py-2 border-b border-warm-100"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Testimoni
+            </Link>
+            <Button asChild variant="primary" className="w-full">
+              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                Mulai Sekarang
+              </Link>
+            </Button>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -64,39 +114,34 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
 
             {/* Left: Copy */}
-            <div className="space-y-8">
+            <div>
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 border border-teal-200 rounded-full text-teal-700 text-sm font-medium">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-coral-100 text-coral-600 text-sm font-semibold mb-6">
                 <SparklesIcon className="w-4 h-4" />
-                100% Gratis Selamanya
+                <span>Lisensi Seumur Hidup — Rp 99.000</span>
               </div>
 
               {/* Headline */}
-              <h1 className="text-5xl lg:text-6xl font-bold text-warm-900 leading-tight">
-                Bikin Soal & Modul Ajar dalam
-                <span className="block bg-gradient-to-r from-coral-500 via-coral-400 to-teal-500 bg-clip-text text-transparent">
+              <h1 className="text-5xl lg:text-5xl font-bold text-warm-900 leading-tight">
+                Bikin Soal & Modul Ajar dalam <span className="text-coral-500 italic relative">
                   3 Menit
+                  <svg className="absolute -bottom-2 left-0 w-full h-2 text-coral-300" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="4" />
+                  </svg>
                 </span>
               </h1>
 
               {/* Subheadline */}
-              <p className="text-xl text-warm-600 leading-relaxed">
-                Asisten AI untuk guru Indonesia. Generate soal lengkap dengan kisi-kisi,
-                modul ajar sesuai Kurikulum Merdeka, dan kuis interaktif.
-                <strong className="text-coral-600"> Tanpa bayar sepeser pun.</strong>
+              <p className="mt-8 text-xl text-warm-600 leading-relaxed">
+                Asisten AI untuk guru Indonesia. Generate soal lengkap dengan kisi-kisi, modul ajar sesuai Kurikulum Merdeka, dan kuis interaktif. <span className="text-coral-600 font-bold">Bayar sekali, pakai selamanya.</span>
               </p>
 
               {/* CTA */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  variant="primary"
-                  className="group shadow-xl hover:shadow-2xl"
-                  asChild
-                >
+              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="h-14 px-8 text-lg shadow-coral-200 shadow-lg">
                   <Link href="/login" className="flex items-center">
-                    Mulai Sekarang — Gratis
-                    <RocketIcon className="w-5 h-5 ml-2 group-hover:-translate-y-1 group-hover:translate-x-1 transition" />
+                    Dapatkan Akses Sekarang
+                    <ArrowRightIcon className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
 
@@ -208,53 +253,44 @@ export default function LandingPage() {
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b-2 border-warm-200">
-                  <th className="text-left p-4 text-warm-700 font-semibold">Fitur</th>
-                  <th className="p-4">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-coral-500 to-coral-400 text-white rounded-lg font-bold shadow-md">
-                      <SparklesIcon className="w-5 h-5" />
-                      GuruKit
-                    </div>
-                  </th>
-                  <th className="p-4 text-warm-600 font-medium">APAL</th>
-                  <th className="p-4 text-warm-600 font-medium">Manual</th>
+                  <th className="p-4 text-left text-warm-600 font-medium">Fitur Utama</th>
+                  <th className="p-4 text-coral-600 font-bold">GuruKit</th>
+                  <th className="p-4 text-warm-600 font-medium text-center italic">Aplikasi Lain</th>
+                  <th className="p-4 text-warm-600 font-medium">Cara Manual</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-warm-50">
                 {[
-                  { feature: 'Harga', gurukit: 'GRATIS', apal: 'Rp 97.000', manual: 'Gratis (tapi lama)' },
-                  { feature: 'Generate Soal + Kisi-kisi', gurukit: true, apal: true, manual: false },
-                  { feature: 'Upload Materi (PDF/Foto)', gurukit: true, apal: false, manual: false },
-                  { feature: 'Edit di Browser', gurukit: true, apal: false, manual: true },
-                  { feature: 'Preview Sebelum Download', gurukit: true, apal: false, manual: true },
-                  { feature: 'Kuis Interaktif + Analytics', gurukit: true, apal: false, manual: false },
-                  { feature: 'History & Cloud Save', gurukit: true, apal: false, manual: false },
-                  { feature: 'AI Remedial Generator', gurukit: true, apal: false, manual: false },
-                  { feature: 'Google Classroom Integration', gurukit: 'Soon', apal: false, manual: false },
+                  { feature: 'Biaya', gurukit: 'Rp 99rb (Lifetime)', other: 'Langganan Bulanan', manual: 'Gratis (tapi lama)' },
+                  { feature: 'Generate Soal + Kisi-kisi', gurukit: true, other: true, manual: false },
+                  { feature: 'Upload Materi (PDF/Foto)', gurukit: true, other: false, manual: false },
+                  { feature: 'Edit di Browser', gurukit: true, other: false, manual: true },
+                  { feature: 'Preview Sebelum Download', gurukit: true, other: false, manual: true },
+                  { feature: 'Kuis Interaktif + Analytics', gurukit: true, other: false, manual: false },
+                  { feature: 'History & Cloud Save', gurukit: true, other: false, manual: false },
+                  { feature: 'AI Remedial Generator', gurukit: true, other: false, manual: false },
+                  { feature: 'Target Kurikulum Merdeka', gurukit: true, other: false, manual: false },
                 ].map((row, i) => (
-                  <tr key={i} className="border-b border-warm-100 hover:bg-warm-50 transition">
-                    <td className="p-4 font-medium text-warm-900">{row.feature}</td>
+                  <tr key={i} className="hover:bg-warm-50/50 transition">
+                    <td className="p-4 text-warm-900 font-medium">{row.feature}</td>
                     <td className="p-4 text-center">
                       {typeof row.gurukit === 'boolean' ? (
-                        row.gurukit ? (
-                          <CheckCircleIcon className="w-6 h-6 text-success mx-auto" />
-                        ) : (
-                          <XCircleIcon className="w-6 h-6 text-warm-300 mx-auto" />
-                        )
+                        <CheckCircleIcon className="w-5 h-5 text-teal-500 mx-auto" />
                       ) : (
-                        <span className={`font-semibold ${row.gurukit === 'GRATIS' || row.gurukit === 'Soon' ? 'text-coral-600' : 'text-warm-900'}`}>
+                        <span className={`font-semibold ${row.gurukit.includes('Rp 99rb') ? 'text-coral-600' : 'text-warm-900'}`}>
                           {row.gurukit}
                         </span>
                       )}
                     </td>
                     <td className="p-4 text-center">
-                      {typeof row.apal === 'boolean' ? (
-                        row.apal ? (
-                          <CheckCircleIcon className="w-6 h-6 text-warm-400 mx-auto" />
+                      {typeof row.other === 'boolean' ? (
+                        row.other ? (
+                          <CheckCircleIcon className="w-5 h-5 text-warm-300 mx-auto" />
                         ) : (
-                          <XCircleIcon className="w-6 h-6 text-warm-300 mx-auto" />
+                          <XCircleIcon className="w-5 h-5 text-warm-200 mx-auto" />
                         )
                       ) : (
-                        <span className="text-warm-600">{row.apal}</span>
+                        <span className="text-warm-400 text-sm italic">{row.other}</span>
                       )}
                     </td>
                     <td className="p-4 text-center">
@@ -350,27 +386,20 @@ export default function LandingPage() {
       <section className="py-24 bg-gradient-to-r from-coral-500 via-coral-400 to-teal-500 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/patterns/dots.svg')] opacity-10" />
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Siap Tingkatkan Produktivitas Mengajar?
+            Siap Menjadi Guru yang Lebih Produktif?
           </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Bergabung dengan 1,247+ guru Indonesia yang sudah beralih ke GuruKit
+          <p className="text-coral-100 text-xl mb-10 max-w-2xl mx-auto">
+            Dapatkan akses penuh ke seluruh fitur GuruKit hanya dengan sekali bayar. Investasi terbaik untuk karier Anda.
           </p>
-
-          <Button
-            size="xl"
-            className="bg-white text-coral-600 hover:bg-warm-50 shadow-2xl group"
-            asChild
-          >
-            <Link href="/login" className="flex items-center">
-              Mulai Gratis Sekarang
-              <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-2 transition" />
+          <Button asChild size="lg" variant="secondary" className="h-14 px-10 text-lg">
+            <Link href="/login">
+              Dapatkan Akses Sekarang — Rp 99.000
             </Link>
           </Button>
-
-          <p className="mt-6 text-white/80">
-            Tidak perlu kartu kredit • Gratis selamanya • 2 menit setup
+          <p className="mt-6 text-coral-200 text-sm">
+            Lisensi Seumur Hidup • Update Selamanya • 2 Menit Setup
           </p>
         </div>
       </section>
