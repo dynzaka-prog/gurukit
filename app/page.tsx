@@ -132,8 +132,8 @@ export default function LandingPage() {
 
               {/* Headline */}
               <h1 className="text-5xl lg:text-5xl font-bold text-warm-900 leading-tight">
-                Bikin Soal & Modul Ajar dalam <span className="text-coral-500 italic relative">
-                  3 Menit
+                Dulu, bikin soal itu RIBET dan <span className="text-coral-500 italic relative">
+                  MENGHABISKAN WAKTU...
                   <svg className="absolute -bottom-2 left-0 w-full h-2 text-coral-300" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="4" />
                   </svg>
@@ -142,7 +142,9 @@ export default function LandingPage() {
 
               {/* Subheadline */}
               <p className="mt-8 text-xl text-warm-600 leading-relaxed">
-                Asisten AI untuk guru Indonesia. Generate soal lengkap dengan kisi-kisi, modul ajar sesuai Kurikulum Merdeka, dan kuis interaktif. <span className="text-coral-600 font-bold">Bayar sekali, pakai selamanya.</span>
+                Sekarang cukup <span className="text-coral-600 font-bold">1x KLIK</span> → soal, kunci jawaban, kisi-kisi, modul ajar → langsung jadi otomatis, kurang dari <span className="bg-coral-100 px-1 rounded">3 menit.</span>
+                <br /><br />
+                Tanpa begadang. Tanpa pusing struktur. Tanpa takut salah standar Kurikulum Merdeka. Guru bisa fokus ngajar dengan tenang, <span className="underline decoration-teal-500 decoration-2">TANPA pusing lagi urusan administrasi.</span>
               </p>
 
               {/* CTA */}
@@ -159,10 +161,10 @@ export default function LandingPage() {
                   variant="secondary"
                   asChild
                 >
-                  <Link href="#demo" className="flex items-center">
+                  <a href="#cara-kerja" onClick={e => scrollToSection(e, 'cara-kerja')} className="flex items-center">
                     <PlayIcon className="w-5 h-5 mr-2" />
-                    Lihat Demo
-                  </Link>
+                    Lihat Cara Kerja
+                  </a>
                 </Button>
               </div>
 
@@ -246,15 +248,100 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* [NEW] Problem Analysis Section */}
+      <section className="py-24 bg-warn-50/50">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-warm-900 mb-6">
+              Sebenarnya, apa sih penyebab GURU selalu <span className="text-error underline">KEWALAHAN</span> bikin soal?
+            </h2>
+            <div className="space-y-6 text-xl text-warm-700 text-left bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-warm-200">
+              <p>BUKAN karena guru kurang paham materi. BUKAN pula karena guru malas menyusun soal.</p>
+              <p className="font-bold text-warm-900 text-2xl">Masalahnya?</p>
+              <p>Sejak awal, GAK pernah ada sistem praktis yang bantu guru bikin soal lengkap — <span className="text-teal-600 font-bold underline">CEPAT, RAPI, dan SIAP PAKAI.</span></p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <XCircleIcon className="w-6 h-6 text-error shrink-0 mt-1" />
+                  <span>Guru dituntut menyiapkan soal sesuai **Kurikulum Merdeka**, menyeimbangkan **tingkat kesulitan**, memperhatikan **dimensi kognitif (C1–C6)**, lalu harus bikin kunci jawaban dan kisi-kisi yang sinkron…</span>
+                </li>
+                <li className="flex items-start gap-3 text-warm-600 italic">
+                  <span>Akhirnya? Guru bikin soal satu-satu dari nol, kunci jawaban dicatat terpisah, kisi-kisi dikerjakan terakhir, dan revisi dari koordinator mapel datang berkali-kali.</span>
+                </li>
+              </ul>
+              <div className="p-6 bg-error/5 rounded-2xl border-l-4 border-error">
+                <p className="text-error font-semibold">Energi habis untuk administrasi. Waktu hilang berjam-jam di depan laptop. Bukan untuk mengajar, tapi mengurus dokumen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* [NEW] Solusi & Cara Kerja Section */}
+      <section id="cara-kerja" className="py-24 bg-white relative">
+        <div className="max-w-5xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-warm-900 mb-6">Maka dari itu, solusinya adalah...</h2>
+            <p className="text-2xl text-warm-600">Gunakan pendekatan Teknologi GuruKit-AI 1-Klik</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="p-8 bg-gradient-to-br from-coral-50 to-white rounded-3xl border border-coral-100 shadow-sm">
+              <h3 className="text-2xl font-bold text-coral-600 mb-4">Gaya Lama (Manual)</h3>
+              <ul className="space-y-4 text-warm-600">
+                <li className="flex items-center gap-2">❌ 2-3 jam per paket soal</li>
+                <li className="flex items-center gap-2">❌ Kisi-kisi bikin manual terakhir</li>
+                <li className="flex items-center gap-2">❌ Repot menyeimbangkan C1-C6</li>
+                <li className="flex items-center gap-2">❌ Begadang & Stres administrasi</li>
+              </ul>
+            </div>
+            <div className="p-8 bg-gradient-to-br from-teal-50 to-white rounded-3xl border border-teal-100 shadow-xl scale-105">
+              <h3 className="text-2xl font-bold text-teal-600 mb-4">Cara GuruKit-AI</h3>
+              <ul className="space-y-4 text-warm-900 font-medium">
+                <li className="flex items-center gap-2">✅ Kurang dari 3 menit</li>
+                <li className="flex items-center gap-2">✅ Soal + Kunci + Kisi-kisi Sinkron</li>
+                <li className="flex items-center gap-2">✅ Otomatis Level C1-C6</li>
+                <li className="flex items-center gap-2">✅ Mengajar Tenang & Profesional</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Transformation */}
+          <div className="bg-warm-900 rounded-[3rem] p-12 text-white overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 rounded-full blur-3xl" />
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold mb-8 text-center">Hasilnya? Luar Biasa...</h3>
+              <div className="grid sm:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <p className="text-teal-400 font-bold text-xl">🎯 Mengajar Ringan</p>
+                  <p className="text-warm-300">Tanpa terbebani administrasi yang bikin stres berhari-hari.</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-coral-400 font-bold text-xl">👔 Guru Profesional</p>
+                  <p className="text-warm-300">Kepala sekolah melihat Anda sebagai guru yang visioner.</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-teal-400 font-bold text-xl">😏 Rekan Guru "Julid"</p>
+                  <p className="text-warm-300">Kini justru penasaran & ingin belajar cara instan Anda bikin soal.</p>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-coral-400 font-bold text-xl">🏡 Waktu Keluarga</p>
+                  <p className="text-warm-300">Pulang sekolah tepat waktu tanpa bawa tumpukan dokumen.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Comparison Table */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white border-t border-warm-100">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-warm-900 mb-4">
-              Mengapa GuruKit?
+              Bandingkan Sendiri...
             </h2>
             <p className="text-xl text-warm-600">
-              Bandingkan sendiri dengan kompetitor
+              GuruKit terbukti lebih unggul dibanding cara lain.
             </p>
           </div>
 
@@ -263,7 +350,7 @@ export default function LandingPage() {
               <thead>
                 <tr className="border-b-2 border-warm-200">
                   <th className="p-4 text-left text-warm-600 font-medium">Fitur Utama</th>
-                  <th className="p-4 text-coral-600 font-bold">GuruKit</th>
+                  <th className="p-4 text-coral-600 font-bold text-xl">GuruKit</th>
                   <th className="p-4 text-warm-600 font-medium text-center italic">Aplikasi Lain</th>
                   <th className="p-4 text-warm-600 font-medium">Cara Manual</th>
                 </tr>
@@ -271,22 +358,21 @@ export default function LandingPage() {
               <tbody className="divide-y divide-warm-50">
                 {[
                   { feature: 'Biaya', gurukit: 'Rp 99rb (Lifetime)', other: 'Langganan Bulanan', manual: 'Gratis (tapi lama)' },
-                  { feature: 'Generate Soal + Kisi-kisi', gurukit: true, other: true, manual: false },
+                  { feature: 'Soal + Kunci + Kisi-kisi sinkron', gurukit: true, other: false, manual: false },
                   { feature: 'Upload Materi (PDF/Foto)', gurukit: true, other: false, manual: false },
                   { feature: 'Edit di Browser', gurukit: true, other: false, manual: true },
-                  { feature: 'Preview Sebelum Download', gurukit: true, other: false, manual: true },
-                  { feature: 'Kuis Interaktif + Analytics', gurukit: true, other: false, manual: false },
-                  { feature: 'History & Cloud Save', gurukit: true, other: false, manual: false },
-                  { feature: 'AI Remedial Generator', gurukit: true, other: false, manual: false },
                   { feature: 'Target Kurikulum Merdeka', gurukit: true, other: false, manual: false },
+                  { feature: 'Level Kognitif C1-C6 otomatis', gurukit: true, other: false, manual: false },
+                  { feature: 'AI Remedial Generator', gurukit: true, other: false, manual: false },
+                  { feature: 'Kuis Interaktif + Analytics', gurukit: true, other: false, manual: false },
                 ].map((row, i) => (
                   <tr key={i} className="hover:bg-warm-50/50 transition">
                     <td className="p-4 text-warm-900 font-medium">{row.feature}</td>
                     <td className="p-4 text-center">
                       {typeof row.gurukit === 'boolean' ? (
-                        <CheckCircleIcon className="w-5 h-5 text-teal-500 mx-auto" />
+                        <CheckCircleIcon className="w-6 h-6 text-teal-500 mx-auto" />
                       ) : (
-                        <span className={`font-semibold ${row.gurukit.includes('Rp 99rb') ? 'text-coral-600' : 'text-warm-900'}`}>
+                        <span className={`font-bold text-lg ${row.gurukit.includes('Rp 99rb') ? 'text-coral-600' : 'text-warm-900'}`}>
                           {row.gurukit}
                         </span>
                       )}
@@ -329,7 +415,7 @@ export default function LandingPage() {
               Fitur Lengkap untuk Guru
             </h2>
             <p className="text-xl text-warm-600">
-              Semua yang Anda butuhkan dalam satu platform
+              Di dalam GuruKit, Anda akan mendapatkan:
             </p>
           </div>
 
@@ -338,37 +424,37 @@ export default function LandingPage() {
               {
                 icon: <FileTextIcon className="w-8 h-8" />,
                 title: 'Generator Soal Pintar',
-                description: 'Buat soal PG, Essay, HOTS, AKM dengan kisi-kisi lengkap dalam hitungan detik',
+                description: 'Buat soal PG, Essay, HOTS, AKM lengkap dengan kunci jawaban + kisi-kisi hanya dalam hitungan menit. Tanpa ribet mikirin format.',
                 color: 'coral'
+              },
+              {
+                icon: <UploadCloudIcon className="w-8 h-8" />,
+                title: 'Upload Materi Sendiri (OCR)',
+                description: 'Upload PDF atau foto buku Anda → AI bikin soal DARI materi Anda sendiri. Bukan soal generic dari internet.',
+                color: 'teal'
               },
               {
                 icon: <BookOpenIcon className="w-8 h-8" />,
                 title: 'Modul Ajar Otomatis',
-                description: 'Generate Modul Ajar sesuai Kurikulum Merdeka dengan 13 komponen lengkap',
-                color: 'teal'
-              },
-              {
-                icon: <UploadCloudIcon className="w-8 h-8" />,
-                title: 'Upload Materi Sendiri',
-                description: 'Upload PDF/foto buku, AI bikin soal DARI materi Anda (bukan generic)',
+                description: 'Generate Modul Ajar sesuai Kurikulum Merdeka dengan 13 komponen lengkap. Tinggal input topik → modul langsung jadi.',
                 color: 'coral'
               },
               {
                 icon: <EditIcon className="w-8 h-8" />,
                 title: 'Edit Langsung di Browser',
-                description: 'Ga perlu download dulu. Edit soal/modul langsung, auto-save',
+                description: 'Ga perlu download dulu. Edit soal/modul langsung, auto-save. Cepat dan praktis tanpa ngetik dari nol.',
                 color: 'teal'
               },
               {
                 icon: <UsersIcon className="w-8 h-8" />,
                 title: 'Kuis Interaktif',
-                description: 'Share link ke siswa, auto-koreksi, analytics per soal, leaderboard',
+                description: 'Ubah soal jadi kuis interaktif sekejap. Share link ke siswa, auto-koreksi, ada leaderboard untuk memacu semangat.',
                 color: 'coral'
               },
               {
                 icon: <BarChartIcon className="w-8 h-8" />,
-                title: 'AI Remedial Generator',
-                description: 'AI analisis kesalahan siswa, auto-generate soal remedial yang lebih mudah',
+                title: 'Pembuat Soal UNLIMITED',
+                description: 'Buat soal SEBANYAK yang Anda butuhkan — tanpa batasan jumlah. Untuk semua mapel dan semua jenjang.',
                 color: 'teal'
               }
             ].map((feature, i) => (
@@ -382,7 +468,7 @@ export default function LandingPage() {
                 <h3 className="text-xl font-bold text-warm-900 mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-warm-600 leading-relaxed">
+                <p className="text-warm-600 leading-relaxed font-medium">
                   {feature.description}
                 </p>
               </div>
@@ -391,25 +477,88 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* [NEW] Testimonials Section */}
+      <section id="testimoni" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-warm-900 mb-4">Mendengar dari Rekan Guru</h2>
+            <p className="text-xl text-warm-600">GuruKit terbukti membantu ribuan guru di seluruh Indonesia</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                name: "Bu Rina",
+                school: "SMP N 3 Yogyakarta",
+                text: "Akhirnya bisa pulang jam 4 tanpa bawa kerjaan ke rumah. Administrasi soal yang biasanya seminggu, sekarang cuma sekejap."
+              },
+              {
+                name: "Pak Budi",
+                school: "SMA N 1 Bandung",
+                text: "Biasanya 2 jam bikin soal PTS, sekarang 5 menit kelar. Gila sih, AI-nya ngerti Kurikulum Merdeka banget."
+              },
+              {
+                name: "Bu Dewi",
+                school: "SD N 2 Surabaya",
+                text: "Kisi-kisinya langsung sinkron sama soal. Koordinator mapel langsung ACC tanpa banyak revisi lagi. Sangat membantu!"
+              },
+              {
+                name: "Pak Agus",
+                school: "SMK N 5 Semarang",
+                text: "Upload foto LKS, 3 menit langsung jadi soal. Ini ajaib buat jurusan saya yang materi bukunya jarang ada di internet."
+              }
+            ].map((t, i) => (
+              <div key={i} className="p-6 bg-bg-secondary rounded-2xl border border-warm-200 hover:shadow-md transition">
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map(s => <SparklesIcon key={s} className="w-4 h-4 text-warning" />)}
+                </div>
+                <p className="text-warm-800 italic mb-6">"{t.text}"</p>
+                <div>
+                  <p className="font-bold text-warm-900">{t.name}</p>
+                  <p className="text-sm text-warm-600">{t.school}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Detail & CTA Section */}
       <section className="py-24 bg-gradient-to-r from-coral-500 via-coral-400 to-teal-500 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/patterns/dots.svg')] opacity-10" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Siap Menjadi Guru yang Lebih Produktif?
+            Harga Aplikasi GuruKit
           </h2>
-          <p className="text-coral-100 text-xl mb-10 max-w-2xl mx-auto">
-            Dapatkan akses penuh ke seluruh fitur GuruKit hanya dengan sekali bayar. Investasi terbaik untuk karier Anda.
-          </p>
-          <Button asChild size="lg" variant="secondary" className="h-14 px-10 text-lg">
-            <Link href="/login">
-              Dapatkan Akses Sekarang — Rp 99.000
-            </Link>
-          </Button>
-          <p className="mt-6 text-coral-200 text-sm">
-            Lisensi Seumur Hidup • Update Selamanya • 2 Menit Setup
-          </p>
+          <div className="bg-white/10 backdrop-blur-md rounded-[2.5rem] p-8 md:p-12 border border-white/20 mb-10 shadow-2xl">
+            <p className="text-white/80 line-through text-2xl mb-2">Rp 440.000</p>
+            <p className="text-white text-6xl font-black mb-8">Rp 99.000</p>
+
+            <div className="space-y-4 text-left max-w-md mx-auto mb-10 text-white">
+              <p className="flex items-center gap-3">✅ Lisensi Seumur Hidup (Lifetime)</p>
+              <p className="flex items-center gap-3">✅ Unlimited Generate Soal & Modul</p>
+              <p className="flex items-center gap-3">✅ Akses Semua Mapel & Jenjang</p>
+              <p className="flex items-center gap-3">✅ Garansi 100% Uang Kembali</p>
+            </div>
+
+            <Button asChild size="lg" variant="secondary" className="h-16 px-12 text-xl shadow-2xl hover:scale-105 transition w-full md:w-auto">
+              <Link href="/login">
+                Dapatkan Akses Sekarang — Rp 99.000
+              </Link>
+            </Button>
+
+            <p className="mt-8 text-white/70 text-sm">
+              *Hanya sekali bayar, tanpa biaya bulanan selamanya.
+            </p>
+          </div>
+
+          <div className="p-6 bg-white/20 rounded-2xl inline-block backdrop-blur-sm border border-white/30">
+            <p className="text-white font-bold leading-relaxed">
+              💰 GARANSI 100% UANG KEMBALI <br />
+              <span className="text-sm font-normal">Jika aplikasi tidak bisa digunakan atau tidak sesuai ekspektasi Anda.</span>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -430,18 +579,18 @@ export default function LandingPage() {
             <div>
               <h4 className="font-semibold text-white mb-4">Produk</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="#" className="hover:text-coral-400 transition">Generator Soal</Link></li>
-                <li><Link href="#" className="hover:text-coral-400 transition">Modul Ajar</Link></li>
-                <li><Link href="#" className="hover:text-coral-400 transition">Kuis Interaktif</Link></li>
+                <li><a href="#fitur" onClick={e => scrollToSection(e, 'fitur')} className="hover:text-coral-400 transition">Generator Soal</a></li>
+                <li><a href="#fitur" onClick={e => scrollToSection(e, 'fitur')} className="hover:text-coral-400 transition">Modul Ajar</a></li>
+                <li><a href="#fitur" onClick={e => scrollToSection(e, 'fitur')} className="hover:text-coral-400 transition">Kuis Interaktif</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-white mb-4">Sumber Daya</h4>
+              <h4 className="font-semibold text-white mb-4">Navigasi</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="#" className="hover:text-coral-400 transition">Tutorial</Link></li>
-                <li><Link href="#" className="hover:text-coral-400 transition">FAQ</Link></li>
-                <li><Link href="#" className="hover:text-coral-400 transition">Kontak</Link></li>
+                <li><a href="#fitur" onClick={e => scrollToSection(e, 'fitur')} className="hover:text-coral-400 transition">Lihat Fitur</a></li>
+                <li><a href="#cara-kerja" onClick={e => scrollToSection(e, 'cara-kerja')} className="hover:text-coral-400 transition">Cara Kerja</a></li>
+                <li><a href="#testimoni" onClick={e => scrollToSection(e, 'testimoni')} className="hover:text-coral-400 transition">Testimoni</a></li>
               </ul>
             </div>
 
