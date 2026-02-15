@@ -20,6 +20,7 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ profileName, onSignOut }: DashboardHeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
     return (
         <>
@@ -90,8 +91,8 @@ export function DashboardHeader({ profileName, onSignOut }: DashboardHeaderProps
                             <Button
                                 variant="ghost"
                                 className="w-full justify-start text-error hover:bg-error/5 px-3"
-                                onClick={async () => {
-                                    await onSignOut();
+                                onClick={() => {
+                                    setShowLogoutConfirm(true);
                                     setIsMenuOpen(false);
                                 }}
                             >
@@ -100,6 +101,39 @@ export function DashboardHeader({ profileName, onSignOut }: DashboardHeaderProps
                             </Button>
                         </div>
                     </nav>
+                </div>
+            )}
+
+            {/* Logout Confirmation Modal */}
+            {showLogoutConfirm && (
+                <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-warm-900/40 backdrop-blur-sm animate-in fade-in duration-300">
+                    <div className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl border border-warm-100 animate-in zoom-in-95 duration-300">
+                        <div className="w-16 h-16 bg-error/10 text-error rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <LogOutIcon className="w-8 h-8" />
+                        </div>
+                        <h3 className="text-xl font-bold text-warm-900 text-center mb-2">Yakin mau keluar?</h3>
+                        <p className="text-warm-600 text-center mb-8">
+                            Bapak/Ibu harus masuk lagi nanti untuk membuat soal atau modul baru.
+                        </p>
+                        <div className="flex flex-col gap-3">
+                            <Button
+                                className="bg-error hover:bg-error/90 border-none shadow-error/20"
+                                variant="primary"
+                                onClick={async () => {
+                                    await onSignOut();
+                                    setShowLogoutConfirm(false);
+                                }}
+                            >
+                                Ya, Keluar Sekarang
+                            </Button>
+                            <Button
+                                variant="ghost"
+                                onClick={() => setShowLogoutConfirm(false)}
+                            >
+                                Batal
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             )}
         </>

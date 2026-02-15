@@ -44,12 +44,16 @@ export default async function DashboardPage() {
                         <FileTextIcon className="w-5 h-5" />
                         Dashboard
                     </Link>
+                    <Link href="/documents" className="flex items-center gap-3 p-3 text-warm-600 hover:bg-warm-50 rounded-xl transition">
+                        <BookOpenIcon className="w-5 h-5" />
+                        Dokumen Saya
+                    </Link>
                     <Link href="/generate/soal" className="flex items-center gap-3 p-3 text-warm-600 hover:bg-warm-50 rounded-xl transition">
-                        <FileTextIcon className="w-5 h-5" />
+                        <PlusIcon className="w-5 h-5" />
                         Bikin Soal
                     </Link>
                     <Link href="/generate/modul" className="flex items-center gap-3 p-3 text-warm-600 hover:bg-warm-50 rounded-xl transition">
-                        <BookOpenIcon className="w-5 h-5" />
+                        <PlusIcon className="w-5 h-5" />
                         Bikin Modul
                     </Link>
                 </nav>
@@ -113,7 +117,7 @@ export default async function DashboardPage() {
                         <section>
                             <div className="flex items-center justify-between mb-6">
                                 <h3 className="text-lg font-bold text-warm-800">Dokumen Terbaru</h3>
-                                <Link href="#" className="text-sm font-semibold text-coral-500 hover:underline">Lihat Semua</Link>
+                                <Link href="/documents" className="text-sm font-semibold text-coral-500 hover:underline">Lihat Semua</Link>
                             </div>
 
                             {documents.length === 0 ? (
@@ -151,10 +155,10 @@ export default async function DashboardPage() {
                                                         </td>
                                                         <td className="p-4">
                                                             <div className="flex items-center gap-2">
-                                                                <button className="p-2 hover:bg-warm-100 rounded-lg text-warm-400 transition">
+                                                                <Link href={`/documents/${item.id}`} className="p-2 hover:bg-warm-100 rounded-lg text-warm-400 transition" title="Lihat">
                                                                     <EyeIcon className="w-4 h-4" />
-                                                                </button>
-                                                                <button className="p-2 hover:bg-warm-100 rounded-lg text-warm-400 transition">
+                                                                </Link>
+                                                                <button className="p-2 hover:bg-warm-100 rounded-lg text-warm-400 transition" title="Download">
                                                                     <DownloadIcon className="w-4 h-4" />
                                                                 </button>
                                                                 <form action={async () => {

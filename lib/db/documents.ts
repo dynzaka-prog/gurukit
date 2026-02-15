@@ -62,3 +62,23 @@ export async function deleteDocument(id: string) {
 
     revalidatePath('/dashboard')
 }
+
+export async function updateDocument(id: string, updates: Partial<{
+    title: string
+    content: any
+    metadata: any
+}>) {
+    const supabase = await createClient()
+    const { error } = await supabase
+        .from('documents')
+        .update(updates)
+        .eq('id', id)
+
+    if (error) {
+        console.error('Error updating document:', error)
+        throw new Error('Failed to update document')
+    }
+
+    revalidatePath('/dashboard')
+    revalidatePath(`/documents/${id}`)
+}

@@ -26,6 +26,15 @@ import Link from "next/link";
 export default function LandingPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-coral-50/20">
 
@@ -42,15 +51,15 @@ export default function LandingPage() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              <Link href="#fitur" className="text-warm-700 hover:text-coral-500 font-medium transition">
+              <a href="#fitur" onClick={e => scrollToSection(e, 'fitur')} className="text-warm-700 hover:text-coral-500 font-medium transition">
                 Fitur
-              </Link>
-              <Link href="#cara-kerja" className="text-warm-700 hover:text-coral-500 font-medium transition">
+              </a>
+              <a href="#cara-kerja" onClick={e => scrollToSection(e, 'cara-kerja')} className="text-warm-700 hover:text-coral-500 font-medium transition">
                 Cara Kerja
-              </Link>
-              <Link href="#testimoni" className="text-warm-700 hover:text-coral-500 font-medium transition">
+              </a>
+              <a href="#testimoni" onClick={e => scrollToSection(e, 'testimoni')} className="text-warm-700 hover:text-coral-500 font-medium transition">
                 Testimoni
-              </Link>
+              </a>
               <Button asChild variant="primary" className="group">
                 <Link href="/login" className="flex items-center">
                   Mulai Sekarang
@@ -74,27 +83,27 @@ export default function LandingPage() {
         {/* Mobile Menu (Overlay) */}
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-warm-200 p-4 space-y-4 animate-in slide-in-from-top duration-300">
-            <Link
+            <a
               href="#fitur"
               className="block text-lg font-medium text-warm-700 py-2 border-b border-warm-100"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={e => scrollToSection(e, 'fitur')}
             >
               Fitur
-            </Link>
-            <Link
+            </a>
+            <a
               href="#cara-kerja"
               className="block text-lg font-medium text-warm-700 py-2 border-b border-warm-100"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={e => scrollToSection(e, 'cara-kerja')}
             >
               Cara Kerja
-            </Link>
-            <Link
+            </a>
+            <a
               href="#testimoni"
               className="block text-lg font-medium text-warm-700 py-2 border-b border-warm-100"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={e => scrollToSection(e, 'testimoni')}
             >
               Testimoni
-            </Link>
+            </a>
             <Button asChild variant="primary" className="w-full">
               <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
                 Mulai Sekarang

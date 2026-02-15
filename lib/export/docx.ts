@@ -24,12 +24,12 @@ export async function exportSoalToDocx(data: any) {
                         ],
                         spacing: { before: 200 },
                     }),
-                    ...Object.entries(s.opsi).map(([key, val]) =>
+                    ...(s.opsi ? Object.entries(s.opsi).map(([key, val]) =>
                         new Paragraph({
                             text: `${key.toUpperCase()}. ${val}`,
                             indent: { left: 720 },
                         })
-                    ),
+                    ) : []),
                     new Paragraph({
                         children: [
                             new TextRun({ text: "Kunci Jawaban: ", bold: true }),
