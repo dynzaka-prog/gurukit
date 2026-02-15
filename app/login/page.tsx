@@ -19,7 +19,7 @@ export default function LoginPage() {
                     </p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-6">
                     <form action={signInWithGoogle}>
                         <Button type="submit" className="w-full flex items-center gap-3 bg-white border-2 border-warm-200 text-warm-700 hover:bg-warm-50 shadow-sm transition-all" variant="ghost">
                             <ChromeIcon className="w-5 h-5 text-coral-500" />
@@ -27,16 +27,7 @@ export default function LoginPage() {
                         </Button>
                     </form>
 
-                    <div className="relative py-4">
-                        <div className="absolute inset-0 flex items-center">
-                            <span className="w-full border-t border-warm-200" />
-                        </div>
-                        <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-white px-2 text-warm-400 font-medium">Atau</span>
-                        </div>
-                    </div>
-
-                    <div className="text-center mt-8 p-4 bg-coral-50 rounded-2xl border border-coral-100">
+                    <div className="text-center mt-6 p-4 bg-coral-50 rounded-2xl border border-coral-100">
                         <p className="text-coral-600 text-sm font-bold">
                             Lisensi Seumur Hidup
                         </p>

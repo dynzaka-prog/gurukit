@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
-export const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+export const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
 export async function generateContent(prompt: string, systemPrompt?: string) {
     const result = await model.generateContent({
