@@ -19,7 +19,9 @@ import {
   BarChartIcon,
   BookIcon,
   MenuIcon,
-  XIcon
+  XIcon,
+  CreditCardIcon,
+  CheckIcon
 } from "lucide-react";
 import Link from "next/link";
 
@@ -333,6 +335,58 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* [NEW] Detailed Visual Guide: Cara Kerja */}
+      <section className="py-24 bg-warm-50/30">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-warm-900 mb-4">4 Langkah Mudah Bikin Soal Ujian</h2>
+            <p className="text-xl text-warm-600">Gak pakai ribet, gak pakai pusing. Ikuti langkah simpel ini:</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Step 1 */}
+            <div className="bg-white p-6 rounded-3xl border border-warm-200 shadow-sm hover:shadow-md transition group">
+              <div className="w-12 h-12 bg-coral-100 rounded-2xl flex items-center justify-center text-coral-600 font-bold text-xl mb-6 group-hover:scale-110 transition">1</div>
+              <h3 className="font-bold text-warm-900 mb-3 text-lg">Atur Kelas & Kurikulum</h3>
+              <p className="text-warm-600 text-sm mb-6">Pilih kurikulumnya (Merdeka/K13) dan pilih kelasnya (misal Kelas 5).</p>
+              <div className="rounded-xl overflow-hidden border border-warm-100 shadow-inner h-48">
+                <img src="/images/how-to/step1.png" alt="Langkah 1" className="w-full h-full object-cover" />
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="bg-white p-6 rounded-3xl border border-warm-200 shadow-sm hover:shadow-md transition group">
+              <div className="w-12 h-12 bg-coral-100 rounded-2xl flex items-center justify-center text-coral-600 font-bold text-xl mb-6 group-hover:scale-110 transition">2</div>
+              <h3 className="font-bold text-warm-900 mb-3 text-lg">Tulis Mata Pelajaran</h3>
+              <p className="text-warm-600 text-sm mb-6">Ketik nama pelajarannya dan judul bab-nya saja. Bapak/Ibu GAK PERLU ngetik soalnya.</p>
+              <div className="rounded-xl overflow-hidden border border-warm-100 shadow-inner h-48">
+                <img src="/images/how-to/step2.png" alt="Langkah 2" className="w-full h-full object-cover" />
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-white p-6 rounded-3xl border border-warm-200 shadow-sm hover:shadow-md transition group">
+              <div className="w-12 h-12 bg-coral-100 rounded-2xl flex items-center justify-center text-coral-600 font-bold text-xl mb-6 group-hover:scale-110 transition">3</div>
+              <h3 className="font-bold text-warm-900 mb-3 text-lg">Pilih Jumlah & Kesulitan</h3>
+              <p className="text-warm-600 text-sm mb-6">Bapak/Ibu mau berapa soal? Pilih yang Mudah, Sedang, atau Sulit. Lalu klik "Buat Soal Sekarang".</p>
+              <div className="rounded-xl overflow-hidden border border-warm-100 shadow-inner h-48">
+                <img src="/images/how-to/step3.png" alt="Langkah 3" className="w-full h-full object-cover" />
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="bg-white p-6 rounded-3xl border border-warm-200 shadow-sm hover:shadow-md transition group">
+              <div className="w-12 h-12 bg-coral-100 rounded-2xl flex items-center justify-center text-coral-600 font-bold text-xl mb-6 group-hover:scale-110 transition">4</div>
+              <h3 className="font-bold text-warm-900 mb-3 text-lg">Soal Jadi & Download</h3>
+              <p className="text-warm-600 text-sm mb-6">Tunggu 10 detik, soal muncul! Klik "Download Word", file otomatis masuk ke Laptop dan siap diprint!</p>
+              <div className="rounded-xl overflow-hidden border border-warm-100 shadow-inner h-48">
+                <img src="/images/how-to/step4.png" alt="Langkah 4" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Comparison Table */}
       <section className="py-24 bg-white border-t border-warm-100">
         <div className="max-w-6xl mx-auto px-4">
@@ -519,6 +573,61 @@ export default function LandingPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* [NEW] Detailed Visual Guide: Cara Daftar & Bayar */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-warm-900 mb-4">Cara Langganan Premium (Hanya 5 Menit)</h2>
+            <p className="text-xl text-warm-600">Ikuti langkah pelan-pelan ini untuk aktifkan akun Bapak/Ibu:</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {/* Step 1 */}
+            <div className="flex flex-col items-center text-center p-6 bg-warm-50 rounded-3xl border border-warm-100 group shadow-sm hover:shadow-md transition">
+              <div className="w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center font-bold mb-4">1</div>
+              <h4 className="font-bold text-warm-900 mb-2">Pilih Paket</h4>
+              <p className="text-warm-600 text-xs mb-4 leading-relaxed">Klik tombol "Beli Sekarang" di tabel harga.</p>
+              <img src="/images/how-to/pay1.png" className="rounded-xl border border-warm-200 mt-auto shadow-sm" />
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex flex-col items-center text-center p-6 bg-warm-50 rounded-3xl border border-warm-100 group shadow-sm hover:shadow-md transition">
+              <div className="w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center font-bold mb-4">2</div>
+              <h4 className="font-bold text-warm-900 mb-2 text-sm lg:text-base">Ambil No. Rekening</h4>
+              <p className="text-warm-600 text-xs mb-4 leading-relaxed">Catat nomor rekening Bapak Joko Susilo.</p>
+              <img src="/images/how-to/pay2.png" className="rounded-xl border border-warm-200 mt-auto shadow-sm" />
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex flex-col items-center text-center p-6 bg-warm-50 rounded-3xl border border-warm-100 group shadow-sm hover:shadow-md transition">
+              <div className="w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center font-bold mb-4">3</div>
+              <h4 className="font-bold text-warm-900 mb-2">Transfer & Foto Struk</h4>
+              <p className="text-warm-600 text-xs mb-4 leading-relaxed">Kirim uang lewat ATM/HP. Foto bukti transfernya.</p>
+              <div className="bg-white p-4 rounded-xl border border-warm-200 mt-auto shadow-sm w-full">
+                <CreditCardIcon className="w-12 h-12 text-teal-500 mx-auto mb-2" />
+                <p className="text-[10px] font-bold text-warm-400 uppercase">Screenshot Bukti</p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="flex flex-col items-center text-center p-6 bg-warm-50 rounded-3xl border border-warm-100 group shadow-sm hover:shadow-md transition">
+              <div className="w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center font-bold mb-4">4</div>
+              <h4 className="font-bold text-warm-900 mb-2">Kirim ke WhatsApp</h4>
+              <p className="text-warm-600 text-xs mb-4 leading-relaxed">Klik tombol hijau untuk kirim bukti ke Admin.</p>
+              <img src="/images/how-to/pay3.png" className="rounded-xl border border-warm-200 mt-auto shadow-sm" />
+            </div>
+
+            {/* Step 5 */}
+            <div className="flex flex-col items-center text-center p-6 bg-warm-50 rounded-3xl border border-warm-100 group shadow-sm hover:shadow-md transition">
+              <div className="w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center font-bold mb-4">5</div>
+              <h4 className="font-bold text-warm-900 mb-2">Akun Aktif!</h4>
+              <p className="text-warm-600 text-xs mb-4 leading-relaxed">Tunggu 5 menit, Admin buka kuncinya. Beres!</p>
+              <img src="/images/how-to/pay4.png" className="rounded-xl border border-warm-200 mt-auto shadow-sm" />
+            </div>
           </div>
         </div>
       </section>
