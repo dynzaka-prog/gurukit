@@ -20,48 +20,48 @@ PRINSIP PENYUSUNAN SOAL:
 FORMAT OUTPUT: Gunakan JSON terstruktur.`;
 
 export interface SoalConfig {
-    kurikulum: string;
-    jenjang: string;
-    fase: string;
-    kelas: string;
-    mataPelajaran: string;
-    materi: string;
-    jumlahSoal: number;
-    jenisSoal: string[];
-    tingkatKesulitan: string;
-    levelKognitif: 'otomatis' | string[];
-    tipeSoal: 'Standar' | 'Soal HOTS' | 'Soal AKM';
-    sumberMateri?: string;
+  kurikulum: string;
+  jenjang: string;
+  fase: string;
+  kelas: string;
+  mataPelajaran: string;
+  materi: string;
+  jumlahSoal: number;
+  jenisSoal: string[];
+  tingkatKesulitan: string;
+  levelKognitif: 'otomatis' | string[];
+  tipeSoal: 'Standar' | 'Soal HOTS' | 'Soal AKM';
+  sumberMateri?: string;
 }
 
 export const generateSoalPrompt = (config: SoalConfig) => {
-    const {
-        kurikulum,
-        jenjang,
-        fase,
-        kelas,
-        mataPelajaran,
-        materi,
-        jumlahSoal,
-        jenisSoal,
-        tingkatKesulitan,
-        levelKognitif,
-        tipeSoal,
-        sumberMateri
-    } = config;
+  const {
+    kurikulum,
+    jenjang,
+    fase,
+    kelas,
+    mataPelajaran,
+    materi,
+    jumlahSoal,
+    jenisSoal,
+    tingkatKesulitan,
+    levelKognitif,
+    tipeSoal,
+    sumberMateri
+  } = config;
 
-    let contextualInfo = '';
-    if (sumberMateri) {
-        contextualInfo = `SUMBER MATERI DARI GURU:\n${sumberMateri}\n\nPENTING: Buat soal BERDASARKAN materi di atas.`;
-    }
+  let contextualInfo = '';
+  if (sumberMateri) {
+    contextualInfo = `SUMBER MATERI DARI GURU:\n${sumberMateri}\n\nPENTING: Buat soal BERDASARKAN materi di atas.`;
+  }
 
-    const kognitifDistribusi = levelKognitif === 'otomatis'
-        ? 'Distribusi otomatis seimbang (C1: 15%, C2: 35%, C3: 25%, C4: 15%, C5: 7%, C6: 3%)'
-        : `Fokus pada level: ${levelKognitif.join(', ')}`;
+  const kognitifDistribusi = levelKognitif === 'otomatis'
+    ? 'Distribusi otomatis seimbang (C1: 15%, C2: 35%, C3: 25%, C4: 15%, C5: 7%, C6: 3%)'
+    : `Fokus pada level: ${Array.isArray(levelKognitif) ? levelKognitif.join(', ') : levelKognitif}`;
 
-    return `${contextualInfo}
+  return `${contextualInfo}
 
-TUGAS: Buat ${jumlahSoal} soal ${jenisSoal.join(' + ')} untuk penilaian harian
+TUGAS: Buat ${jumlahSoal} soal ${Array.isArray(jenisSoal) ? jenisSoal.join(' + ') : (jenisSoal || 'soal')} untuk penilaian harian
 
 KONTEKS PEMBELAJARAN:
 - Kurikulum: ${kurikulum}
