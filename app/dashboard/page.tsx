@@ -16,10 +16,17 @@ import { getDocuments, deleteDocument } from "@/lib/db/documents";
 import { formatDistanceToNow } from "date-fns";
 import { id } from "date-fns/locale";
 import { DashboardHeader } from "@/components/dashboard-header";
+import { PurchaseTracker } from "@/components/purchase-tracker";
 
 export default async function DashboardPage() {
     const profile = await getProfile();
     const documents = await getDocuments();
+
+    // FB Purchase Tracking Logic
+    let triggerPurchase = false;
+    if (profile?.is_premium && !profile?.purchase_tracked) {
+        triggerPurchase = true;
+    }
 
     const handleSignOut = async () => {
         'use server'
@@ -32,6 +39,7 @@ export default async function DashboardPage() {
 
     return (
         <div className="min-h-screen bg-bg-primary flex">
+            {triggerPurchase && <PurchaseTracker userId={profile.id} />}
             {/* Desktop Sidebar */}
             <aside className="hidden lg:flex w-64 bg-white border-r border-warm-200 flex-col sticky top-0 h-screen">
                 <div className="p-6 border-b border-warm-100 flex items-center gap-2">

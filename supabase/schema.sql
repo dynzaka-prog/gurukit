@@ -6,6 +6,8 @@ CREATE TABLE public.profiles (
   full_name TEXT,
   avatar_url TEXT,
   onboarded BOOLEAN DEFAULT FALSE,
+  is_premium BOOLEAN DEFAULT FALSE,
+  purchase_tracked BOOLEAN DEFAULT FALSE,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 

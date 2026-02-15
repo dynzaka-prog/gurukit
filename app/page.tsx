@@ -61,7 +61,7 @@ export default function LandingPage() {
                 Testimoni
               </a>
               <Button asChild variant="primary" className="group">
-                <Link href="/login" className="flex items-center">
+                <Link href="/order" className="flex items-center">
                   Mulai Sekarang
                   <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition" />
                 </Link>
@@ -105,7 +105,7 @@ export default function LandingPage() {
               Testimoni
             </a>
             <Button asChild variant="primary" className="w-full">
-              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link href="/order" onClick={() => setIsMobileMenuOpen(false)}>
                 Mulai Sekarang
               </Link>
             </Button>
@@ -150,7 +150,7 @@ export default function LandingPage() {
               {/* CTA */}
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="h-14 px-8 text-lg shadow-coral-200 shadow-lg">
-                  <Link href="/login" className="flex items-center">
+                  <Link href="/order" className="flex items-center">
                     Dapatkan Akses Sekarang
                     <ArrowRightIcon className="w-5 h-5 ml-2" />
                   </Link>
@@ -543,7 +543,7 @@ export default function LandingPage() {
             </div>
 
             <Button asChild size="lg" variant="secondary" className="h-16 px-12 text-xl shadow-2xl hover:scale-105 transition w-full md:w-auto">
-              <Link href="/login">
+              <Link href="/order">
                 Dapatkan Akses Sekarang — Rp 99.000
               </Link>
             </Button>
