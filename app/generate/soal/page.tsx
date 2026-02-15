@@ -170,9 +170,10 @@ export default function GenerateSoalPage() {
                         kesulitan: config.tingkatKesulitan
                     }
                 })
+                console.log('Document created successfully:', savedDoc.id)
                 setCurrentDocId(savedDoc.id)
-            } catch (saveError) {
-                console.error('Auto-save failed:', saveError)
+            } catch (saveError: any) {
+                console.error('Auto-save failed in browser:', saveError.message)
             }
         } catch (err: any) {
             setError(err.message)
@@ -514,6 +515,12 @@ export default function GenerateSoalPage() {
                                                 </button>
                                             </div>
                                             <div className="flex gap-2">
+                                                {currentDocId && (
+                                                    <Button size="sm" variant="primary" className="bg-coral-500 hover:bg-coral-600 shadow-md text-xs" onClick={() => router.push(`/quiz/${currentDocId}`)}>
+                                                        <BrainIcon className="w-3 h-3 mr-1" />
+                                                        Mainkan Kuis
+                                                    </Button>
+                                                )}
                                                 <Button size="sm" variant="ghost" onClick={() => setStep(1)} className="text-xs">
                                                     Buat Baru
                                                 </Button>

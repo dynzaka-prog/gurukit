@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { BookOpenIcon, ChromeIcon } from "lucide-react";
 import Link from "next/link";
-import { signInWithGoogle } from "./actions";
+import { signInWithGoogle, signInWithEmail } from "./actions";
 
 export default function LoginPage() {
     return (
@@ -21,9 +21,44 @@ export default function LoginPage() {
 
                 <div className="space-y-6">
                     <form action={signInWithGoogle}>
-                        <Button type="submit" className="w-full flex items-center gap-3 bg-white border-2 border-warm-200 text-warm-700 hover:bg-warm-50 shadow-sm transition-all" variant="ghost">
+                        <Button type="submit" className="w-full h-12 flex items-center gap-3 bg-white border-2 border-warm-200 text-warm-700 hover:bg-warm-50 rounded-2xl shadow-sm transition-all font-semibold" variant="ghost">
                             <ChromeIcon className="w-5 h-5 text-coral-500" />
                             Lanjutkan dengan Google
+                        </Button>
+                    </form>
+
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <span className="w-full border-t border-warm-100"></span>
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-white px-4 text-warm-400 font-medium">Atau masuk dengan email</span>
+                        </div>
+                    </div>
+
+                    <form action={signInWithEmail} className="space-y-4">
+                        <div className="space-y-2">
+                            <label className="text-sm font-semibold text-warm-700 ml-1">Email</label>
+                            <input
+                                name="email"
+                                type="email"
+                                placeholder="nama@sekolah.sch.id"
+                                required
+                                className="w-full h-12 px-4 bg-warm-50 border border-warm-200 rounded-2xl outline-none focus:border-coral-400 focus:ring-4 focus:ring-coral-400/10 transition-all text-warm-900"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-sm font-semibold text-warm-700 ml-1">Password</label>
+                            <input
+                                name="password"
+                                type="password"
+                                placeholder="••••••••"
+                                required
+                                className="w-full h-12 px-4 bg-warm-50 border border-warm-200 rounded-2xl outline-none focus:border-coral-400 focus:ring-4 focus:ring-coral-400/10 transition-all text-warm-900"
+                            />
+                        </div>
+                        <Button type="submit" className="w-full h-12 bg-coral-500 hover:bg-coral-600 text-white rounded-2xl shadow-lg shadow-coral-500/20 transition-all font-bold text-lg">
+                            Masuk Sekarang
                         </Button>
                     </form>
 

@@ -441,6 +441,11 @@ export default function GenerateModulPage() {
                                                 <p className="text-warm-500 text-sm">Terdiri dari 13 komponen lengkap Kurikulum Merdeka.</p>
                                             </div>
                                             <div className="flex gap-2">
+                                                {currentDocId && (
+                                                    <Button size="sm" variant="primary" className="bg-teal-500 hover:bg-teal-600 shadow-md text-xs" onClick={() => router.push(`/documents/${currentDocId}`)}>
+                                                        Lihat Detail
+                                                    </Button>
+                                                )}
                                                 <Button size="sm" variant="ghost" onClick={() => setStep(1)} className="text-xs">
                                                     Buat Baru
                                                 </Button>
