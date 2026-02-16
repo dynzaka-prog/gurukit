@@ -35,7 +35,7 @@ export async function signInWithEmail(formData: FormData) {
 
     if (error) {
         console.error('Login error:', error)
-        return redirect('/login?error=Invalid email or password')
+        return { error: 'Email atau password salah. Silakan cek kembali.' }
     }
 
     return redirect('/dashboard')

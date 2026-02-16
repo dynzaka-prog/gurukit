@@ -1,9 +1,30 @@
+'use client'
+
 import { Button } from "@/components/ui/button";
-import { BookOpenIcon, ChromeIcon } from "lucide-react";
+import { BookOpenIcon, ChromeIcon, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { signInWithGoogle, signInWithEmail } from "./actions";
+import { useState } from "react";
 
 export default function LoginPage() {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    async function handleSubmit(formData: FormData) {
+        setLoading(true);
+        setError(null);
+        try {
+            const result = await signInWithEmail(formData);
+            if (result && 'error' in result) {
+                setError(result.error as string);
+                setLoading(false);
+            }
+        } catch (err) {
+            setError("Terjadi kesalahan sistem. Silakan coba lagi.");
+            setLoading(false);
+        }
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-bg-primary to-bg-secondary flex flex-col items-center justify-center p-4">
             <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8 border border-warm-200">
@@ -21,7 +42,11 @@ export default function LoginPage() {
 
                 <div className="space-y-6">
                     <form action={signInWithGoogle}>
-                        <Button type="submit" className="w-full h-12 flex items-center gap-3 bg-white border-2 border-warm-200 text-warm-700 hover:bg-warm-50 rounded-2xl shadow-sm transition-all font-semibold" variant="ghost">
+                        <Button
+                            type="submit"
+                            className="w-full h-12 flex items-center gap-3 bg-white border-2 border-warm-200 text-warm-700 hover:bg-warm-50 rounded-2xl shadow-sm transition-all font-semibold"
+                            variant="ghost"
+                        >
                             <ChromeIcon className="w-5 h-5 text-coral-500" />
                             Lanjutkan dengan Google
                         </Button>
@@ -36,7 +61,12 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    <form action={signInWithEmail} className="space-y-4">
+                    <form action={handleSubmit} className="space-y-4">
+                        {error && (
+                            <div className="p-3 bg-red-50 border border-red-100 rounded-xl text-red-600 text-sm font-medium text-center animate-shake">
+                                {error}
+                            </div>
+                        )}
                         <div className="space-y-2">
                             <label className="text-sm font-semibold text-warm-700 ml-1">Email</label>
                             <input
@@ -57,8 +87,19 @@ export default function LoginPage() {
                                 className="w-full h-12 px-4 bg-warm-50 border border-warm-200 rounded-2xl outline-none focus:border-coral-400 focus:ring-4 focus:ring-coral-400/10 transition-all text-warm-900"
                             />
                         </div>
-                        <Button type="submit" className="w-full h-12 bg-coral-500 hover:bg-coral-600 text-white rounded-2xl shadow-lg shadow-coral-500/20 transition-all font-bold text-lg">
-                            Masuk Sekarang
+                        <Button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full h-12 bg-coral-500 hover:bg-coral-600 text-white rounded-2xl shadow-lg shadow-coral-500/20 transition-all font-bold text-lg disabled:bg-coral-300"
+                        >
+                            {loading ? (
+                                <>
+                                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                                    Mohon Tunggu...
+                                </>
+                            ) : (
+                                "Masuk Sekarang"
+                            )}
                         </Button>
                     </form>
 
