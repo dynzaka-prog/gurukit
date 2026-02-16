@@ -15,16 +15,28 @@ import {
     ChevronRightIcon,
     BrainIcon
 } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { exportSoalToDocx, exportModulToDocx } from '@/lib/export/docx'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Suspense } from 'react'
 
 export default function DocumentsPage() {
+    return (
+        <Suspense fallback={null}>
+            <DocumentsContent />
+        </Suspense>
+    )
+}
+
+function DocumentsContent() {
     const router = useRouter()
+    const searchParams = useSearchParams()
+    const initialFilter = (searchParams.get('type') as 'all' | 'soal' | 'modul') || 'all'
+
     const [documents, setDocuments] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
     const [searchQuery, setSearchQuery] = useState('')
-    const [filterType, setFilterType] = useState<'all' | 'soal' | 'modul'>('all')
+    const [filterType, setFilterType] = useState<'all' | 'soal' | 'modul'>(initialFilter)
 
     useEffect(() => {
         loadDocuments()
@@ -192,15 +204,28 @@ export default function DocumentsPage() {
                                                     year: 'numeric'
                                                 })}
                                             </span>
-                                            <Button
-                                                variant="ghost"
-                                                size="sm"
-                                                className="text-xs font-bold text-coral-500 hover:bg-coral-50 px-2 h-8"
-                                                onClick={() => router.push(`/documents/${doc.id}`)}
-                                            >
-                                                Buka
-                                                <ChevronRightIcon className="w-4 h-4 ml-1" />
-                                            </Button>
+                                            <div className="flex items-center gap-2">
+                                                {doc.type === 'soal' && (
+                                                    <Button
+                                                        variant="ghost"
+                                                        size="sm"
+                                                        className="text-xs font-bold text-amber-600 hover:bg-amber-50 px-2 h-8"
+                                                        onClick={() => router.push(`/quiz/${doc.id}`)}
+                                                    >
+                                                        <BrainIcon className="w-4 h-4 mr-1" />
+                                                        Main Kuis
+                                                    </Button>
+                                                )}
+                                                <Button
+                                                    variant="ghost"
+                                                    size="sm"
+                                                    className="text-xs font-bold text-coral-500 hover:bg-coral-50 px-2 h-8"
+                                                    onClick={() => router.push(`/documents/${doc.id}`)}
+                                                >
+                                                    Buka
+                                                    <ChevronRightIcon className="w-4 h-4 ml-1" />
+                                                </Button>
+                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>

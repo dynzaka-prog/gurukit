@@ -110,14 +110,16 @@ export default async function DashboardPage() {
                                     </div>
                                 </Link>
 
-                                <div className="relative group p-6 md:p-8 bg-warm-50 rounded-3xl border border-dashed border-warm-300 opacity-70 hidden lg:block">
-                                    <div className="w-14 h-14 bg-warm-100 rounded-2xl flex items-center justify-center mb-6">
-                                        <ClockIcon className="w-8 h-8 text-warm-400" />
+                                <Link href="/documents?type=soal" className="group p-6 md:p-8 bg-white rounded-3xl border border-warm-200 hover:border-amber-300 hover:shadow-xl transition-all duration-300">
+                                    <div className="w-12 h-12 md:w-14 md:h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
+                                        <ClockIcon className="w-6 h-6 md:w-8 md:h-8 text-amber-500" />
                                     </div>
-                                    <div className="absolute top-4 right-4 px-2 py-1 bg-warm-200 text-warm-600 text-[10px] font-bold rounded uppercase">Segera Hadir</div>
-                                    <h4 className="text-xl font-bold text-warm-400 mb-2">Kuis Interaktif</h4>
-                                    <p className="text-warm-400 text-sm">Mainkan kuis di kelas dengan leaderboard & analisis siswa.</p>
-                                </div>
+                                    <h4 className="text-lg md:text-xl font-bold text-warm-900 mb-2">Kuis Interaktif</h4>
+                                    <p className="text-warm-600 text-sm mb-4 md:mb-6">Mainkan kuis di kelas dengan leaderboard & analisis siswa.</p>
+                                    <div className="mt-auto flex items-center text-amber-600 font-semibold text-sm">
+                                        Pilih Dokumen <PlusIcon className="w-4 h-4 ml-2" />
+                                    </div>
+                                </Link>
                             </div>
                         </section>
 
