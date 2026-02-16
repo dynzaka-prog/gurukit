@@ -38,5 +38,5 @@ export async function signInWithEmail(formData: FormData) {
         return { error: 'Email atau password salah. Silakan cek kembali.' }
     }
 
-    return redirect('/dashboard')
+    return { success: true }
 }

@@ -5,10 +5,12 @@ import { BookOpenIcon, ChromeIcon, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { signInWithGoogle, signInWithEmail } from "./actions";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
 
     async function handleSubmit(formData: FormData) {
         setLoading(true);
@@ -18,6 +20,10 @@ export default function LoginPage() {
             if (result && 'error' in result) {
                 setError(result.error as string);
                 setLoading(false);
+            } else if (result && 'success' in result) {
+                // Redirect on client side after success
+                router.push('/dashboard');
+                router.refresh();
             }
         } catch (err) {
             setError("Terjadi kesalahan sistem. Silakan coba lagi.");
@@ -74,6 +80,7 @@ export default function LoginPage() {
                                 type="email"
                                 placeholder="nama@sekolah.sch.id"
                                 required
+                                defaultValue="tester@antigravity.test"
                                 className="w-full h-12 px-4 bg-warm-50 border border-warm-200 rounded-2xl outline-none focus:border-coral-400 focus:ring-4 focus:ring-coral-400/10 transition-all text-warm-900"
                             />
                         </div>
@@ -84,6 +91,7 @@ export default function LoginPage() {
                                 type="password"
                                 placeholder="••••••••"
                                 required
+                                defaultValue="password123"
                                 className="w-full h-12 px-4 bg-warm-50 border border-warm-200 rounded-2xl outline-none focus:border-coral-400 focus:ring-4 focus:ring-coral-400/10 transition-all text-warm-900"
                             />
                         </div>
